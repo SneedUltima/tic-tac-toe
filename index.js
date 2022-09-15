@@ -14,17 +14,20 @@ const gameBoard = (() => {
     return board;
 })();
 
-const displayController =(() => {
-
-})();
-
 //  Player factory function
-function player() {
-    const player1 = "x";
-    const player2 = "o";
-    let score = 0;
-    let turn = 0;
-
-    return{player1, player2}
+function player(symbol, score, turn) {
+    return {
+        symbol, score, turn
+    }
 }
 
+const player1 = player("x", 0, 0)
+const player2 = player("o", 0, 0)
+
+const displayController =(() => {
+    if(player1.turn === 0 && player2.turn === 0) {
+        console.log("hello");
+    }
+})();
+
+console.log(player1.symbol);
