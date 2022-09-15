@@ -1,0 +1,28 @@
+.game-board{
+    display: grid;
+    width: 200px;
+    height: 200px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.grid{
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.grid-0, .grid-3, .grid-6 {
+    border-left: none;
+}
+
+.grid-0, .grid-1, .grid-2 {
+    border-top: none;
+}
+
+.grid-2, .grid-5, .grid-8 {
+    border-right: none;
+}
+
+.grid-6, .grid-7, .grid-8 {
+    border-bottom: none;
+}
