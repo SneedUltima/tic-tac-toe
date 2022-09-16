@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&display=swap');
+
 .game-board{
     display: grid;
     width: 200px;
@@ -9,6 +11,9 @@
 .grid{
     border: 2px solid black;
     cursor: pointer;
+    font-size: 50px;
+    text-align: center;
+    font-family: 'Reem Kufi Ink', sans-serif;
 }
 
 .grid-0, .grid-3, .grid-6 {
