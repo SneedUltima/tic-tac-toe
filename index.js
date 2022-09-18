@@ -1,4 +1,6 @@
 const boardContainer = document.querySelector(".game-board")
+let player1Score = document.querySelector("#player-1-score")
+let player2Score = document.querySelector("#player-2-score")
 
 //  Player factory function
 function player(symbol, score, turn) {
@@ -29,13 +31,27 @@ const gameBoard = (() => {
             const div = document.createElement("div")
             div.addEventListener("click", (e) => {
                 displayController(e, index)
-                checkWin(player1.symbol)
-                checkWin(player2.symbol)
+                checkWin(player1, player1.symbol)
+                if(checkWin(player1, player1.symbol) === true) {
+                    winner(player1)
+                    player1Score.textContent = player1.score
+                    console.log("player1");
+                    // div.textContent = board.gameBoard[index]
+                }
+                checkWin(player2, player2.symbol)
+                if(checkWin(player2, player2.symbol) === true) {
+                    winner(player2)
+                    player1Score.textContent = player2.score
+                    console.log("player2");
+                    // div.textContent = board.gameBoard[index]
+                }
             })
             div.classList.add(`grid`, `grid-${board.gameBoard[index]}`)
             div.textContent = board.gameBoard[index]
             boardContainer.appendChild(div)
         })
+        player1Score.textContent = player1.score
+        player2Score.textContent = player2.score
         return {board};
     })();
 
@@ -55,11 +71,20 @@ const displayController = function(e, index) {
     }
 };
 
-const checkWin = function(symbol) {
+const checkWin = function(player, symbol) {
     board = gameBoard.board.gameBoard
     for(condition in winConditions) {
         if(board[winConditions[condition][0]] === symbol && board[winConditions[condition][1]] === symbol && board[winConditions[condition][2]] === symbol){
-            console.log("winner"); 
+            console.log("winner");
+            return true;
         }
     }
+}
+
+const winner = function(player) {
+    player.score ++;
+    `${player}Score`.textContent = player.score
+    console.log(player.score);
+    gameBoard.board.gameBoard = ["","","","","","","","",""]
+    console.log(gameBoard.board.gameBoard);
 }
