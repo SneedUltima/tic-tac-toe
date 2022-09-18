@@ -34,13 +34,15 @@ const gameBoard = (() => {
             boardContainer.appendChild(div)
             div.addEventListener("click", (e) => {
                 displayController(e, index)
-                checkWin(player1, player1.symbol)
+                if(!board.gameBoard.includes("")){
+                    console.log("Game Tie");
+                    clearDisplay()
+                }
                 if(checkWin(player1, player1.symbol) === true) {
                     winner(player1)
                     player1Score.textContent = player1.score
                     clearDisplay()
                 }
-                checkWin(player2, player2.symbol)
                 if(checkWin(player2, player2.symbol) === true) {
                     winner(player2)
                     player2Score.textContent = player2.score
