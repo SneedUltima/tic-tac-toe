@@ -57,8 +57,8 @@ const displayController = function(e, index) {
 
 const checkWin = function(symbol) {
     board = gameBoard.board.gameBoard
-    for(condition in winConditions){
-        if(board[winConditions[0]] && board[winConditions[1]] && board[winConditions[2]] === symbol){
+    for(condition in winConditions) {
+        if(board[winConditions[condition][0]] === symbol && board[winConditions[condition][1]] === symbol && board[winConditions[condition][2]] === symbol){
             console.log("winner"); 
         }
     }
