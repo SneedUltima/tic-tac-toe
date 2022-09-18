@@ -13,6 +13,12 @@ const player2 = player("O", 0, false)
 const winConditions = [
     [0,1,2],
     [3,4,5],
+    [6,7,8],
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [0,4,8],
+    [2,4,6],
 ]
 
 const gameBoard = (() => {
@@ -53,31 +59,7 @@ const checkWin = function(symbol) {
     board = gameBoard.board.gameBoard
     for(condition in winConditions){
         if(board[winConditions[0]] && board[winConditions[1]] && board[winConditions[2]] === symbol){
-            console.log("winner");
+            console.log("winner"); 
         }
     }
-    // if(board[0] && board[1] && board[2] === symbol){
-    //     console.log("winner");
-    // }
-    // if(board[3] && board[4] && board[5] === symbol){
-    //     console.log("winner");
-    // }
-    // if(board[6] && board[7] && board[8] === symbol){
-    //     console.log("winner");
-    // }
-    // if(board[0] && board[3] && board[6] === symbol){
-    //     console.log("winner");
-    // }
-    // if(board[1] && board[4] && board[7] === symbol){
-    //     console.log("winner");
-    // }
-    // if(board[2] && board[5] && board[8] === symbol){
-    //     console.log("winner");
-    // }
-    // if(board[0] && board[4] && board[8] === symbol){
-    //     console.log("winner");
-    // }
-    // if(board[2] && board[4] && board[6] === symbol){
-    //     console.log("winner");
-    // }
 }
