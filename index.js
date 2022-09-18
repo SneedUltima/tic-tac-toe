@@ -65,12 +65,20 @@ const clearDisplay = function() {
 const displayController = function(e, index) {
     board = gameBoard.board.gameBoard
     if(player1.turn && !player2.turn) {
+        if(e.target.textContent === "X" ||
+        e.target.textContent === "O") {
+            return;
+        }
         e.target.textContent = player1.symbol
         board[index] = player1.symbol
         player1.turn = false;
         player2.turn = true;
     }
     else if(!player1.turn && player2.turn) {
+        if(e.target.textContent === "X" ||
+        e.target.textContent === "O") {
+            return;
+        }
         e.target.textContent = player2.symbol
         board[index] = player2.symbol
         player1.turn = true;
