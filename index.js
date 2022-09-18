@@ -29,31 +29,38 @@ const gameBoard = (() => {
     };
     board.gameBoard.forEach(function(element,index) {
             const div = document.createElement("div")
+            div.classList.add(`grid`);
+            div.textContent = board.gameBoard[index]
+            boardContainer.appendChild(div)
             div.addEventListener("click", (e) => {
                 displayController(e, index)
                 checkWin(player1, player1.symbol)
                 if(checkWin(player1, player1.symbol) === true) {
                     winner(player1)
                     player1Score.textContent = player1.score
-                    console.log("player1");
-                    // div.textContent = board.gameBoard[index]
+                    clearDisplay()
                 }
                 checkWin(player2, player2.symbol)
                 if(checkWin(player2, player2.symbol) === true) {
                     winner(player2)
                     player1Score.textContent = player2.score
                     console.log("player2");
-                    // div.textContent = board.gameBoard[index]
+                    clearDisplay()
                 }
             })
-            div.classList.add(`grid`, `grid-${board.gameBoard[index]}`)
-            div.textContent = board.gameBoard[index]
-            boardContainer.appendChild(div)
         })
         player1Score.textContent = player1.score
         player2Score.textContent = player2.score
         return {board};
     })();
+
+const clearDisplay = function() {
+    const grid = document.querySelectorAll(".grid")
+    console.log(grid);
+    grid.forEach((e) => {
+        e.textContent = "";
+    })
+}
 
 const displayController = function(e, index) {
     board = gameBoard.board.gameBoard
@@ -84,7 +91,6 @@ const checkWin = function(player, symbol) {
 const winner = function(player) {
     player.score ++;
     `${player}Score`.textContent = player.score
-    console.log(player.score);
     gameBoard.board.gameBoard = ["","","","","","","","",""]
     console.log(gameBoard.board.gameBoard);
 }
