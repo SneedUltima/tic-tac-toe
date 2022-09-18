@@ -43,7 +43,7 @@ const gameBoard = (() => {
                 checkWin(player2, player2.symbol)
                 if(checkWin(player2, player2.symbol) === true) {
                     winner(player2)
-                    player1Score.textContent = player2.score
+                    player2Score.textContent = player2.score
                     console.log("player2");
                     clearDisplay()
                 }
