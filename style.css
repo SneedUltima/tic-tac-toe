@@ -10,9 +10,44 @@ body{
     background: rgb(0, 0, 0);
 }
 
+.button{
+    text-align: center;
+    margin: auto;
+}
+
+.game-start{
+    font-family: 'Orbitron', sans-serif;
+    font-size: 30px;
+    border-radius: 5%;
+    border: 2px solid white;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    padding: 10px 10px;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.game-start:hover{
+    background-color: rgb(31, 31, 31);
+}
+
+.game-start.hide{
+    opacity: 0;
+    pointer-events: none;
+}
+
 .body-container{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
+    opacity: 0;
+}
+
+.body-container.show{
+    opacity: 1;
 }
 
 header{
@@ -23,6 +58,12 @@ header{
     justify-content: center;
     margin-bottom: 15vh;
     animation: glow 2s ease-in-out infinite alternate;
+}
+
+#symbol {
+    font-family: 'Reem Kufi Ink', sans-serif;
+    font-size: 60px;
+    animation: glow 2s ease-in-out infinite alternate
 }
 
 .scores-1, .scores-2{
@@ -40,8 +81,16 @@ header{
 
 .board-container{
     display: flex;
+    flex-direction: column;
+    gap: 20px;
     justify-content: center;
     align-items: center;
+}
+
+.announcement {
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    animation: glow 2s ease-in-out infinite alternate;
 }
 
 .game-board{

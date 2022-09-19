@@ -1,4 +1,7 @@
+const gameStart = document.querySelector(".game-start")
 const boardContainer = document.querySelector(".game-board")
+const body = document.querySelector(".body-container")
+const gameResult = document.querySelector("#game-result")
 let player1Score = document.querySelector("#player-1-score")
 let player2Score = document.querySelector("#player-2-score")
 
@@ -37,17 +40,20 @@ const gameBoard = (() => {
                 if(!board.gameBoard.includes("")){
                     console.log("Game Tie");
                     clearDisplay()
+                    gameResult.textContent = "Game is a tie!"
                 }
                 if(checkWin(player1, player1.symbol) === true) {
                     winner(player1)
                     player1Score.textContent = player1.score
                     clearDisplay()
+                    gameResult.textContent = "Player 1 Wins!"
                 }
                 if(checkWin(player2, player2.symbol) === true) {
                     winner(player2)
                     player2Score.textContent = player2.score
                     console.log("player2");
                     clearDisplay()
+                    gameResult.textContent = "Player 2 Wins!"
                 }
             })
         })
@@ -103,3 +109,9 @@ const winner = function(player) {
     player.score ++;
     `${player}Score`.textContent = player.score
 }
+
+gameStart.addEventListener("click",() => {
+    console.log("Hjndfjss");
+    body.classList.add("show")
+    gameStart.classList.add("hide")
+})
