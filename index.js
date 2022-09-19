@@ -62,6 +62,7 @@ const clearDisplay = function() {
     grid.forEach((e) => {
         e.textContent = "";
     })
+    gameBoard.board.gameBoard = ["","","","","","","","",""]
 }
 
 const displayController = function(e, index) {
@@ -101,6 +102,4 @@ const checkWin = function(player, symbol) {
 const winner = function(player) {
     player.score ++;
     `${player}Score`.textContent = player.score
-    gameBoard.board.gameBoard = ["","","","","","","","",""]
-    console.log(gameBoard.board.gameBoard);
 }
