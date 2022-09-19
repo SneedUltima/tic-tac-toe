@@ -1,3 +1,4 @@
+// DOM Elements
 const gameStart = document.querySelector(".game-start")
 const boardContainer = document.querySelector(".game-board")
 const body = document.querySelector(".body-container")
@@ -5,16 +6,18 @@ const gameResult = document.querySelector("#game-result")
 let player1Score = document.querySelector("#player-1-score")
 let player2Score = document.querySelector("#player-2-score")
 
-//  Player factory function
+//  Player factory function to create Player Object
 function player(symbol, score, turn) {
     return {
         symbol, score, turn
     }
 }
 
+// Creating the two players for the game
 const player1 = player("X", 0, true)
 const player2 = player("O", 0, false)
 
+// The winning positions X and O must match in the gameboard array to win game
 const winConditions = [
     [0,1,2],
     [3,4,5],
@@ -26,6 +29,7 @@ const winConditions = [
     [2,4,6],
 ]
 
+// Gameboard module to create game grid and populate each individual grid with an event listener
 const gameBoard = (() => {
     const board = { 
         gameBoard: ["","","","","","","","",""]
@@ -62,6 +66,7 @@ const gameBoard = (() => {
         return {board};
     })();
 
+// Function to clear game grid display and the game object array
 const clearDisplay = function() {
     const grid = document.querySelectorAll(".grid")
     console.log(grid);
@@ -71,6 +76,7 @@ const clearDisplay = function() {
     gameBoard.board.gameBoard = ["","","","","","","","",""]
 }
 
+// Function to control game logic and place symbols in correct position
 const displayController = function(e, index) {
     board = gameBoard.board.gameBoard
     if(player1.turn && !player2.turn) {
@@ -95,6 +101,7 @@ const displayController = function(e, index) {
     }
 };
 
+// Function to check if player has met winning conditions
 const checkWin = function(player, symbol) {
     board = gameBoard.board.gameBoard
     for(condition in winConditions) {
@@ -105,11 +112,13 @@ const checkWin = function(player, symbol) {
     }
 }
 
+// Function to update score
 const winner = function(player) {
     player.score ++;
     `${player}Score`.textContent = player.score
 }
 
+// Start game button event listener
 gameStart.addEventListener("click",() => {
     console.log("Hjndfjss");
     body.classList.add("show")
